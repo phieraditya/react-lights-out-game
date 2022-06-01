@@ -74,15 +74,16 @@ class Board extends Component {
     flipCell(y + 1, x);
 
     // win when every cell is turned off
-    // TODO: determine is the game has been won
-
-    let hasWon = false; // temp
+    // determine is the game has been won
+    let hasWon = board.every((row) => row.every((cell) => !cell));
     this.setState({ board, hasWon });
   }
 
   /** Render game board or winning message. */
   render() {
     // if the game is won, just show a winning msg & render nothing else
+    if (this.state.hasWon) return <p1>YOU WON!!</p1>;
+
     let tblBoard = [];
     for (let y = 0; y < this.props.nrows; y++) {
       let row = [];
